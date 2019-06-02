@@ -5,33 +5,33 @@ export class FetchData extends Component {
 
   constructor (props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { topics: [], loading: true };
 
-    fetch('api/SampleData/WeatherForecasts')
+    fetch('api/FeedData/ReturnsFeedInfo')
       .then(response => response.json())
       .then(data => {
-        this.setState({ forecasts: data, loading: false });
+        this.setState({ topics: data.topics, loading: false });
       });
   }
 
-  static renderForecastsTable (forecasts) {
+  static renderForecastsTable (topics) {
     return (
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Título</th>
+            <th>Título sem artigos/prep.</th>
+            <th>Qtd. de palavras</th>
+            <th>Qtd. de palavras sem artigos/prep.</th>
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {topics.map(topic =>
+            <tr key={topic.value}>
+              <td>{topic.value}</td>
+              <td>{topic.valueWithoutPrepositions}</td>
+              <td>{topic.wordCount}</td>
+              <td>{topic.wordCountWithoutPrepositions}</td>
             </tr>
           )}
         </tbody>
@@ -42,12 +42,12 @@ export class FetchData extends Component {
   render () {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : FetchData.renderForecastsTable(this.state.topics);
 
     return (
       <div>
-        <h1>Weather forecast</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <h1>Resultados de Análise para o Feed</h1>
+        <p>Abaixo seguem informações detalhadas das análises realizadas nos últimos 10 tópicos listados no feed de notícias da Minuto Serguros.</p>
         {contents}
       </div>
     );
