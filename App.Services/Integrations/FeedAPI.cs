@@ -1,6 +1,8 @@
 ﻿using App.Domain.Interfaces.Integrations;
+using System.IO;
 using System.Net.Http;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace App.Services.Integrations
 {
@@ -17,11 +19,28 @@ namespace App.Services.Integrations
 
         public XElement GetFeedXml()
         {
-            var result = _httpClient.GetAsync(FEED_API).Result;
+            HttpResponseMessage result;
+            Stream stream;
+            XElement xml;
 
-            var stream = result.Content.ReadAsStreamAsync().Result;
+            try
+            {
+                result = _httpClient.GetAsync(FEED_API).Result;
+                using (stream = result.Content.ReadAsStreamAsync().Result)
+                {
+                    xml = XElement.Load(stream);
+                }
+            }
+            catch
+            {
+                using (FileStream xmlStream = new FileStream("Resources/feed.xml", FileMode.Open))
+                {
+                    xml = XElement.Load(xmlStream);
+                    xml.Add(new XAttribute("isMocked", true));
+                }
+            }
 
-            return XElement.Load(stream);
+            return xml;
         }
     }
 }

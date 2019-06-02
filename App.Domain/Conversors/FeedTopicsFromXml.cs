@@ -17,6 +17,7 @@ namespace App.Domain.Conversors
         {
             var feedTopics = new List<FeedTopic>();
             var xmlTopics = this.getXmlFeedTopics(xml);
+            var isMocked = bool.Parse(xml.Attribute("isMocked")?.Value ?? "false");
 
             if (xmlTopics != null)
                 foreach (var xmlTopic in xmlTopics)
@@ -24,7 +25,7 @@ namespace App.Domain.Conversors
                     var title = (xmlTopic.FirstNode as XElement).Value;
 
                     if (!string.IsNullOrWhiteSpace(title))
-                        feedTopics.Add(new FeedTopic(title));
+                        feedTopics.Add(new FeedTopic(title, isMocked));
                 }
 
             return feedTopics;
