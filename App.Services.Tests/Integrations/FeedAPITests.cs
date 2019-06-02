@@ -1,6 +1,4 @@
-﻿using App.Domain.Interfaces.Services;
-using App.Domain.Interfaces.Integrations;
-using App.Services;
+﻿using App.Domain.Interfaces.Integrations;
 using App.Services.Integrations;
 using NUnit.Framework;
 using System.Xml.Linq;
