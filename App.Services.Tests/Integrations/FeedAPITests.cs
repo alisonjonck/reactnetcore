@@ -1,0 +1,29 @@
+﻿using App.Domain.Interfaces.Services;
+using App.Domain.Interfaces.Integrations;
+using App.Services;
+using App.Services.Integrations;
+using NUnit.Framework;
+using System.Xml.Linq;
+
+namespace App.Tests.Services
+{
+    [TestFixture]
+    public class FeedAPITests
+    {
+        private readonly IFeedAPI _feedAPI;
+
+        public FeedAPITests()
+        {
+            _feedAPI = new FeedAPI();
+        }
+
+        [Test]
+        public void ReturnsAnyFeedTopics()
+        {
+            var feedXml = _feedAPI.GetFeedXml();
+
+            Assert.IsNotNull(feedXml);
+            Assert.IsInstanceOf<XElement>(feedXml);
+        }
+    }
+}
