@@ -13,12 +13,14 @@ namespace App.Tests.Services
     public class FeedServicesTests
     {
         private IFeedServices _feedServices;
+        private Mock<IFeedAPI> feedAPIMock;
+        private Mock<IFeedTopicsFromXml> feedConversorMock;
 
         [SetUp]
         public void SetUp()
         {
-            var feedAPIMock = new Mock<IFeedAPI>();
-            var feedConversorMock = new Mock<IFeedTopicsFromXml>();
+            feedAPIMock = new Mock<IFeedAPI>();
+            feedConversorMock = new Mock<IFeedTopicsFromXml>();
 
             feedConversorMock.Setup(m => m.GetFeedTopics(null)).Returns(new List<FeedTopic>());
 
@@ -32,6 +34,29 @@ namespace App.Tests.Services
 
             Assert.IsInstanceOf<IList<FeedTopic>>(results);
             Assert.AreEqual(0, results.Count);
+        }
+
+        [Test]
+        public void ReturnsFirst10FeedTopics()
+        {
+            prepareMockToReturnMoreThan10FeedTopics();
+
+            var results = _feedServices.GetFirst10FeedTopics();
+            Assert.AreEqual(10, results.Count);
+        }
+
+        private void prepareMockToReturnMoreThan10FeedTopics()
+        {
+            var feedTopics = new List<FeedTopic>();
+
+            for (int i = 0; i < 11; i++)
+            {
+                feedTopics.Add(new FeedTopic("Sample Topic " + i));
+            }
+
+            feedConversorMock.Setup(m => m.GetFeedTopics(null)).Returns(feedTopics);
+
+            _feedServices = new FeedServices(feedAPIMock.Object, feedConversorMock.Object);
         }
     }
 }

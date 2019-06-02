@@ -5,6 +5,7 @@ using App.Domain.Interfaces.Services;
 using App.Domain.Models;
 using App.Services.Integrations;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace App.Services
 {
@@ -24,6 +25,13 @@ namespace App.Services
             var feedXml = _feedAPI.GetFeedXml();
 
             return _feedConversor.GetFeedTopics(feedXml);
+        }
+
+        public IList<FeedTopic> GetFirst10FeedTopics()
+        {
+            var feedTopics = this.GetFeedTopics();
+
+            return feedTopics.Take(10).ToList();
         }
     }
 }
