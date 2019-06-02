@@ -18,7 +18,7 @@ namespace App.Tests.Services
         }
 
         [Test]
-        public void ReturnsAnyFeedTopics()
+        public void ReturnsFeedXml()
         {
             var feedXml = _feedAPI.GetFeedXml();
 
