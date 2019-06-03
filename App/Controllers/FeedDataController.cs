@@ -16,9 +16,9 @@ namespace App.Controllers
         }
 
         [HttpGet("[action]")]
-        public JsonResult ReturnsFeedInfo()
+        public JsonResult ReturnsFeedInfo(bool isThrottle = false)
         {
-            var feedInfo = new FeedInfo(_feedServices.GetFirst10FeedTopics());
+            var feedInfo = new FeedInfo(_feedServices.GetFirst10FeedTopics(isThrottle));
 
             return Json(feedInfo);
         }

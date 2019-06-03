@@ -30,7 +30,7 @@ namespace App.Tests.Services
         [Test]
         public void ReturnsFeedTopics()
         {
-            var results = _feedServices.GetFeedTopics();
+            var results = _feedServices.GetFeedTopics(false);
 
             Assert.IsInstanceOf<IList<FeedTopic>>(results);
             Assert.AreEqual(0, results.Count);
@@ -41,7 +41,16 @@ namespace App.Tests.Services
         {
             prepareMockToReturnMoreThan10FeedTopics();
 
-            var results = _feedServices.GetFirst10FeedTopics();
+            var results = _feedServices.GetFirst10FeedTopics(false);
+            Assert.AreEqual(10, results.Count);
+        }
+
+        [Test]
+        public void ReturnsMockedFirst10FeedTopics()
+        {
+            prepareMockToReturnMoreThan10FeedTopics();
+
+            var results = _feedServices.GetFirst10FeedTopics(true);
             Assert.AreEqual(10, results.Count);
         }
 

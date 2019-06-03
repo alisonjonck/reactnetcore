@@ -4,6 +4,6 @@ namespace App.Domain.Interfaces.Integrations
 {
     public interface IFeedAPI
     {
-        XElement GetFeedXml();
+        XElement GetFeedXml(bool isThrottle);
     }
 }

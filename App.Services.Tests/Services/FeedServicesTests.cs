@@ -17,7 +17,7 @@ namespace App.Tests.Services
         [Test]
         public void ReturnsAnyFeedTopics()
         {
-            var results = _feedServices.GetFeedTopics();
+            var results = _feedServices.GetFeedTopics(false);
 
             Assert.Greater(results.Count, 0);
         }

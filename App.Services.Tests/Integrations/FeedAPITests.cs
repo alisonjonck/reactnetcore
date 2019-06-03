@@ -18,7 +18,7 @@ namespace App.Tests.Services
         [Test]
         public void ReturnsFeedXml()
         {
-            var feedXml = _feedAPI.GetFeedXml();
+            var feedXml = _feedAPI.GetFeedXml(false);
 
             Assert.IsNotNull(feedXml);
             Assert.IsInstanceOf<XElement>(feedXml);

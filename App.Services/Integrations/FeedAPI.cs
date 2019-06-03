@@ -1,4 +1,5 @@
 ﻿using App.Domain.Interfaces.Integrations;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Xml.Linq;
@@ -17,28 +18,30 @@ namespace App.Services.Integrations
             _httpClient = new HttpClient();
         }
 
-        public XElement GetFeedXml()
+        public XElement GetFeedXml(bool isThrottle = false)
         {
             HttpResponseMessage result;
             Stream stream;
             XElement xml;
 
-            //try
-            //{
-            //    result = _httpClient.GetAsync(FEED_API).Result;
-            //    using (stream = result.Content.ReadAsStreamAsync().Result)
-            //    {
-            //        xml = XElement.Load(stream);
-            //    }
-            //}
-            //catch
-            //{
+            try
+            {
+                if (isThrottle) throw new Exception("force throttle");
+
+                result = _httpClient.GetAsync(FEED_API).Result;
+                using (stream = result.Content.ReadAsStreamAsync().Result)
+                {
+                    xml = XElement.Load(stream);
+                }
+            }
+            catch
+            {
                 using (FileStream xmlStream = new FileStream("Resources/feed.xml", FileMode.Open))
                 {
                     xml = XElement.Load(xmlStream);
                     xml.Add(new XAttribute("isMocked", true));
                 }
-            //}
+            }
 
             return xml;
         }

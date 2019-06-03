@@ -5,8 +5,8 @@ namespace App.Domain.Interfaces.Services
 {
     public interface IFeedServices
     {
-        IList<FeedTopic> GetFeedTopics();
+        IList<FeedTopic> GetFeedTopics(bool isThrottle);
 
-        IList<FeedTopic> GetFirst10FeedTopics();
+        IList<FeedTopic> GetFirst10FeedTopics(bool isThrottle);
     }
 }

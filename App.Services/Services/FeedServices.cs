@@ -20,16 +20,16 @@ namespace App.Services
             _feedConversor = feedConversor ?? new FeedTopicsFromXml();
         }
 
-        public IList<FeedTopic> GetFeedTopics()
+        public IList<FeedTopic> GetFeedTopics(bool isThrottle = false)
         {
-            var feedXml = _feedAPI.GetFeedXml();
+            var feedXml = _feedAPI.GetFeedXml(isThrottle);
 
             return _feedConversor.GetFeedTopics(feedXml);
         }
 
-        public IList<FeedTopic> GetFirst10FeedTopics()
+        public IList<FeedTopic> GetFirst10FeedTopics(bool isThrottle = false)
         {
-            var feedTopics = this.GetFeedTopics();
+            var feedTopics = this.GetFeedTopics(isThrottle);
 
             return feedTopics.Take(10).ToList();
         }

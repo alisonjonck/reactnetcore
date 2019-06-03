@@ -5,7 +5,7 @@
         public string Title { get; set; }
         public bool IsMocked { get; set; }
 
-        public FeedTopic(string title, bool isMocked)
+        public FeedTopic(string title, bool isMocked = false)
         {
             Title = title;
             IsMocked = isMocked;

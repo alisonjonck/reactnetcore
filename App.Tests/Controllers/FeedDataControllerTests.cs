@@ -23,7 +23,7 @@ namespace App.Tests.Controllers
                 feedTopics.Add(new FeedTopic("Exemplo de topico com palavras de exemplo " + i));
             }
 
-            feedServicesMock.Setup(x => x.GetFirst10FeedTopics()).Returns(feedTopics);
+            feedServicesMock.Setup(x => x.GetFirst10FeedTopics(false)).Returns(feedTopics);
 
             FeedDataController controller = new FeedDataController(feedServicesMock.Object);
 
