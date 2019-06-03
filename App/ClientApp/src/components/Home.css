@@ -1,12 +1,12 @@
 .text-go-now {
     font-size: 36px;
     text-decoration: underline;
-    background-color: #007bff;
-    color: #FFF;
+    color: #007bff;
 }
 
 .text-go-now:hover {
     background-color: #FFF;
     color: #007bff;
     border: 1px solid #007bff;
+    text-decoration: underline;
 }

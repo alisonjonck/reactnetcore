@@ -36,7 +36,7 @@ export class FeedInfo extends Component {
 
     return (
       <div>
-        {state.isMocked && <FeedbackMessage />}
+        {<FeedbackMessage isMocked={state.isMocked} />}
         <MostUsedInfo words={state.mostUsed10} />
         <FeedInfoTable topics={state.topics} />
       </div>

@@ -25,5 +25,5 @@ html {
 .text-analyze-feed:hover{
   background-color: #007bff;
   color: #fff !important;
-  text-decoration: underline;
+  text-decoration: none;
 }

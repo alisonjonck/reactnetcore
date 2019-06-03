@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './MockWarning.css';
+import './FeedbackMessage.css';
 
 const warningStyle = {
     padding: 15,
@@ -8,6 +8,11 @@ const warningStyle = {
     fontWeight: 'bold',
     margin: 20
 };
+
+const successStyle = {
+    color: '#FFF',
+    backgroundColor: 'green'
+}
 
 export default class MockWarning extends Component {
     constructor(props) {
@@ -25,14 +30,24 @@ export default class MockWarning extends Component {
         setTimeout(() => me.setState({ removeWarning: true }), 7000);
     }
 
+    getFeedBackText() {
+        return this.props.isMocked
+            ? "Demonstração realizada com dados do exemplo feeds.xml"
+            : "Demonstração realizada com dados atualizados da API da Minuto Seguros"
+    }
+
     render() {
-        var state = this.state;
+        var state = this.state,
+            isMocked = this.props.isMocked,
+            className = isMocked ? 'mock-warning' : 'mock-info',
+            feedBackText = this.getFeedBackText(),
+            currentStyle = Object.assign({}, warningStyle, !isMocked && successStyle);
 
         return (
             !state.removeWarning
                 ? (
-                    <div style={warningStyle} className={!state.showWarning ? 'mock-warning hide' : 'mock-warning'}>
-                        <span>Demonstração realizada com dados do exemplo feeds.xml:</span>
+                    <div style={currentStyle} className={!state.showWarning ? `${className} hide` : `${className}`}>
+                        <span>{feedBackText}:</span>
                     </div>
                 )
                 : null
