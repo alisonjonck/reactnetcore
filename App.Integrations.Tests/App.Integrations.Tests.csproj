@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\App.Domain\App.Domain.csproj" />
     <ProjectReference Include="..\App.Services\App.Services.csproj" />
-    <ProjectReference Include="..\App\App.csproj" />
+    <ProjectReference Include="..\App\App.Presentation.csproj" />
   </ItemGroup>
 
 </Project>
