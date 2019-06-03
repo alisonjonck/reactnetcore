@@ -10,6 +10,4 @@ install:
 script:
  - dotnet build App.Domain/App.Domain.csproj
  - dotnet build App.Services/App.Services.csproj
- - dotnet build App/App.csproj
- - dotnet build App.Tests/App.Tests.csproj
- - dotnet test App.Tests/App.Tests.csproj
+ - dotnet build App/App.Presentation.csproj
