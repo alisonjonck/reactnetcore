@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import FeedInfoTable from './FeedInfoTable';
 import MostUsedInfo from './MostUsedInfo';
-import MockWarning from './MockWarning'
+import FeedbackMessage from './FeedbackMessage'
 
 const wrapperStyle = {
   marginBottom: 60
+}, headerStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center'
 };
+
 
 export class FeedInfo extends Component {
   static displayName = FeedInfo.name;
@@ -31,7 +36,7 @@ export class FeedInfo extends Component {
 
     return (
       <div>
-        {state.isMocked && <MockWarning />}
+        {state.isMocked && <FeedbackMessage />}
         <MostUsedInfo words={state.mostUsed10} />
         <FeedInfoTable topics={state.topics} />
       </div>
@@ -57,11 +62,11 @@ export class FeedInfo extends Component {
   }
 
   getSimulateThrottleBtn() {
-    var text = this.state.isMocked ? "Tentar reconectar" : "Simular throttle";
+    var text = this.state.isMocked ? "Carregar da API" : "Carregar de feed.xml";
 
     return (
       <div>
-        <button disabled={this.state.loading} onClick={this.throtleRequest.bind(this)}>
+        <button className="btn btn-primary" disabled={this.state.loading} onClick={this.throtleRequest.bind(this)}>
           {text}
         </button>
       </div>
@@ -75,8 +80,10 @@ export class FeedInfo extends Component {
 
     return (
       <div style={wrapperStyle}>
-        <h1>Resultados de Análise para o Feed</h1>
-        {this.getSimulateThrottleBtn()}
+        <div style={headerStyle}>
+          <h1>Resultados de Análise para o Feed</h1>
+          {this.getSimulateThrottleBtn()}
+        </div>
         {contents}
         <hr />
       </div>

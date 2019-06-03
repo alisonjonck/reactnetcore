@@ -3,8 +3,8 @@ import './MockWarning.css';
 
 const warningStyle = {
     padding: 15,
-    backgroundColor: '#ff4545',
-    color: 'white',
+    backgroundColor: 'rgb(250, 145, 84)',
+    color: '#282828',
     fontWeight: 'bold',
     margin: 20
 };
@@ -21,8 +21,8 @@ export default class MockWarning extends Component {
     componentDidMount() {
         var me = this;
 
-        setTimeout(() => me.setState({ showWarning: false }), 3000);
-        setTimeout(() => me.setState({ removeWarning: true }), 5000);
+        setTimeout(() => me.setState({ showWarning: false }), 5000);
+        setTimeout(() => me.setState({ removeWarning: true }), 7000);
     }
 
     render() {
@@ -32,7 +32,7 @@ export default class MockWarning extends Component {
             !state.removeWarning
                 ? (
                     <div style={warningStyle} className={!state.showWarning ? 'mock-warning hide' : 'mock-warning'}>
-                        <span>Dados reais não disponíveis no momento. Demonstração realizada com dados de exemplo:</span>
+                        <span>Demonstração realizada com dados do exemplo feeds.xml:</span>
                     </div>
                 )
                 : null
