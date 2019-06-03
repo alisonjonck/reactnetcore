@@ -8,6 +8,12 @@
 
 ### Inicie a aplicação
 
+- Instale as dependências antes para rodar através da CLI:
+
+```
+dotnet restore reactnetcore.sln
+```
+
 ```
 cd App && dotnet run
 ```
