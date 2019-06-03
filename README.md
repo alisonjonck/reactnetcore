@@ -1,12 +1,18 @@
 [![Build Status](https://travis-ci.org/alisonjonck/reactnetcore.svg?branch=master)](https://travis-ci.org/alisonjonck/reactnetcore)
 
-.net core + React
+## Exemplo .net core + React
 
 ## Download última versão .NET Core SDK
 
 * [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/windows)
 
 ### Inicie a aplicação
+
+- Instale as dependências antes para rodar através da CLI:
+
+```
+dotnet restore reactnetcore.sln
+```
 
 ```
 cd App && dotnet run
