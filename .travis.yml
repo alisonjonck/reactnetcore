@@ -8,5 +8,7 @@ install:
  - dotnet restore reactnetcore.sln
 
 script:
- - dotnet build reactnetcore.sln
+ - dotnet build App.Domain/App.Domain.csproj
+ - dotnet build App.Services/App.Services.csproj
+ - dotnet build App/App.csproj
  - dotnet test App.Tests
