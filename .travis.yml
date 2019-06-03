@@ -1,11 +1,13 @@
+dist: bionic
 language: csharp
 solution: reactnetcore.sln
 mono: none
-dotnet: 2.2.300
+dotnet: 2.2
 
 install:
  - dotnet restore reactnetcore.sln
 
 script:
  - dotnet build reactnetcore.sln
- - dotnet test App.Tests/App.Tests.csproj
+ - dotnet test App.Tests
+ - dotnet test App.Integrations.Tests
