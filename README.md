@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/alisonjonck/reactnetcore.svg?branch=master)](https://travis-ci.org/alisonjonck/reactnetcore)
 
-.net core + React
+## Exemplo .net core + React
 
 ## Download última versão .NET Core SDK
 
