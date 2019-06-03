@@ -10,4 +10,3 @@ install:
 script:
  - dotnet build reactnetcore.sln
  - dotnet test App.Tests
- - dotnet test App.Integrations.Tests

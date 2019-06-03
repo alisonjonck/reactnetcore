@@ -10,9 +10,9 @@ export default (props) => {
                 {
                     words.map((word) => (
                         <li>
-                            <span>Palavra: <b>{word.value}</b></span>
+                            <span><b>{word.value}</b></span>
                             <span> - </span>
-                            <span>Ocorrencias: <b>{word.count}</b></span>
+                            <span>Ocorrência(s): <b>{word.count}</b></span>
                         </li>
                     ))
                 }

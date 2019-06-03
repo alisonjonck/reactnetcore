@@ -36,7 +36,7 @@ export class FeedInfo extends Component {
 
     return (
       <div>
-        {<FeedbackMessage isMocked={state.isMocked} />}
+        <FeedbackMessage isMocked={state.isMocked} />
         <MostUsedInfo words={state.mostUsed10} />
         <FeedInfoTable topics={state.topics} />
       </div>
@@ -66,7 +66,11 @@ export class FeedInfo extends Component {
 
     return (
       <div>
-        <button className="btn btn-primary" disabled={this.state.loading} onClick={this.throtleRequest.bind(this)}>
+        <button
+          className="btn btn-primary"
+          disabled={this.state.loading}
+          onClick={this.throtleRequest.bind(this)}
+        >
           {text}
         </button>
       </div>

@@ -27,7 +27,7 @@ namespace App.Domain.Helpers
                 allTexts += $" {text.ToLower()}";
             }
 
-            var mostUsedList = allTexts.Replace(",", " ").Split(" ")
+            var mostUsedList = allTexts.Replace(",", " ").Replace(":", " ").Split(" ")
               .Where(x => !string.IsNullOrWhiteSpace(x))
               .GroupBy(x => x)
               .Select(x => new

@@ -5,7 +5,7 @@ export default (props) => {
 
   return (
     <React.Fragment>
-      <h4>Palavras importantes (últimos 10 posts)</h4>
+      <h4>Palavras importantes (últimos 10 posts):</h4>
       <table className='table table-striped'>
         <thead>
           <tr>
@@ -16,14 +16,16 @@ export default (props) => {
           </tr>
         </thead>
         <tbody>
-          {topics.map(topic =>
-            <tr key={topic.value}>
-              <td>{topic.value}</td>
-              <td>{topic.valueWithoutPrepositions}</td>
-              <td>{topic.wordCount}</td>
-              <td>{topic.wordCountWithoutPrepositions}</td>
-            </tr>
-          )}
+          {
+            topics.map(topic =>
+              <tr key={topic.value}>
+                <td>{topic.value}</td>
+                <td>{topic.valueWithoutPrepositions}</td>
+                <td>{topic.wordCount}</td>
+                <td>{topic.wordCountWithoutPrepositions}</td>
+              </tr>
+            )
+          }
         </tbody>
       </table>
     </React.Fragment>
