@@ -12,10 +12,11 @@
 
 ```
 dotnet restore reactnetcore.sln
+dotnet build reactnetcore.sln
 ```
 
 ```
-cd App && dotnet run
+cd App && dotnet publish && dotnet run
 ```
 
 ### Rode os testes unitários 
