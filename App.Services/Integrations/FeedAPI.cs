@@ -23,22 +23,22 @@ namespace App.Services.Integrations
             Stream stream;
             XElement xml;
 
-            try
-            {
-                result = _httpClient.GetAsync(FEED_API).Result;
-                using (stream = result.Content.ReadAsStreamAsync().Result)
-                {
-                    xml = XElement.Load(stream);
-                }
-            }
-            catch
-            {
+            //try
+            //{
+            //    result = _httpClient.GetAsync(FEED_API).Result;
+            //    using (stream = result.Content.ReadAsStreamAsync().Result)
+            //    {
+            //        xml = XElement.Load(stream);
+            //    }
+            //}
+            //catch
+            //{
                 using (FileStream xmlStream = new FileStream("Resources/feed.xml", FileMode.Open))
                 {
                     xml = XElement.Load(xmlStream);
                     xml.Add(new XAttribute("isMocked", true));
                 }
-            }
+            //}
 
             return xml;
         }

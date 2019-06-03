@@ -9,9 +9,11 @@ namespace App.ViewModels
     {
         public IList<TopicInfo> Topics { get; set; }
         public IList<StringCount> MostUsed10 { get; set; }
+        public bool IsMocked { get; set; }
 
         public FeedInfo(IList<FeedTopic> topics)
         {
+            this.IsMocked = topics.First()?.IsMocked ?? false;
             this.Topics = getTopicInfo(topics);
             this.MostUsed10 = topics.Select(x => x.Title.RemovePrepositions(" "))
                 .ToList()
