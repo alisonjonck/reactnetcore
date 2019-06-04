@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FeedInfo } from './components/FeedInfo';
+import { Layout } from './components/Orgs/Layout/Layout';
+import { Home } from './components/Pages/Home/Home';
+import { FeedInfo } from './components/Pages/FeedInfo/FeedInfo';
 
 export default class App extends Component {
   static displayName = App.name;
