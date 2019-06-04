@@ -19,6 +19,12 @@ dotnet build reactnetcore.sln
 cd App && dotnet publish && dotnet run
 ```
 
+### Rode os testes dos componentes React
+
+```
+cd App/ClientApp && npm test
+```
+
 ### Rode os testes unitários 
 
 ```
