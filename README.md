@@ -4,7 +4,7 @@
 
 ## Download última versão .NET Core SDK
 
-* [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/windows)
+* [.NET Core 2.2 SDK](https://www.microsoft.com/net/download/windows)
 
 ### Inicie a aplicação
 
